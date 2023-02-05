@@ -65,8 +65,8 @@ export function TodoApp() {
       <Button
         type='submit'
         onClick={() => {
-          console.log('Add called!');
-        }}>
+            items.push({title: newItemText, id: items.length + 1});
+          }}>
         Add TODO item
       </Button>
       {items.map(eachItem => (
@@ -74,10 +74,15 @@ export function TodoApp() {
           item={eachItem}
           key={eachItem.id}
           deleteItem={() => {
-            console.log('Delete item called');
+            setItems(items.filter(taskName => taskName !== eachItem));
           }}
         />
       ))}
+      <Button 
+        type='submit'
+        onClick={() => setItems([])}>
+        Delete all tasks
+      </Button>
     </VStack>
   );
 }
