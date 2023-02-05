@@ -65,7 +65,8 @@ export function TodoApp() {
       <Button
         type='submit'
         onClick={() => {
-            items.push({title: newItemText, id: items.length + 1});
+            setItems(() => items.concat({title: newItemText, id: items.length}));
+            setNewItemText('');
           }}>
         Add TODO item
       </Button>
